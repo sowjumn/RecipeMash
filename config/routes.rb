@@ -1,4 +1,9 @@
 RecipeMash::Application.routes.draw do
+  get "recipes/home"
+
+  get "recipes/contact"
+
+  root to: 'recipes#home'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
