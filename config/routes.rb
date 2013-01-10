@@ -6,6 +6,11 @@ RecipeMash::Application.routes.draw do
   get "recipes/contact"
 
   root to: 'recipes#home'
+  
+  resources :users
+
+  match '/signup', to: "users#new"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
