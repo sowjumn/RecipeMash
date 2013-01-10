@@ -2,15 +2,36 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-h1.home {
-  font-size: 3.5em; 
+.page {  
+  width: 100%;
+  position:fixed;
+  font-size: 12pt;
+  padding:20px;
+  margin-left:auto;
+   }
+.header {
+  font-size: 32pt; 
+  font-weight: normal;
+  font-style: italic;
   text-align: center;
-  padding-top: 10px;
-  font-family: "Lucida Calligraphy", "Lucida Grande", sans-serif;
-  color: #990033;
-  letter-spacing: 10px
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-family: "chalkduster", "Lucida Grande", sans-serif;
+  color: #DABAE4;
+  background-color: #0C6B45;
+  position: fixed;
+  letter-spacing: 5px;
+  top: 0px;
+  left: 0px;
+  width: 100%;
  }
 
-body {
-  background-image: url('/assets/Art2.png');
+.bcontent {
+   margin-top: 100px ; 
+   text-align: center;
+//  background-image: url('/assets/Art2.png');
   }
+
+body {
+   background-color: #E4E2BA
+}
