@@ -26,9 +26,25 @@
   width: 100%;
  }
 
+table.home {
+border-collapse:separate;
+border-spacing:80px 10px;
+}
+.table-header {
+   font-size: 20pt;
+   color: #0C6B45;
+   font-family: "Mistral"
+  }
+
+.table-content {
+   font-size: 14pt;
+   color: #0C6B45;
+   font-family: "Baskerville"
+  }
+
 .bcontent {
    margin-top: 80px ; 
-   text-align: center;
+   //text-align: center;
 //  background-image: url('/assets/Art2.png');
   }
 
