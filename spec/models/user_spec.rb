@@ -6,10 +6,11 @@ describe User do
       @user = User.new(name: "Example", email: "example@user.com")
    end
 
-   it {should respond_to(:name) }
-  
-
    subject { @user } 
+
+   it {should respond_to(:name) }
+   it {should respond_to(:email) }  
+
    
    it {should be_valid }
    
@@ -27,5 +28,35 @@ describe User do
       before { @user.name = "a"*51 }
       it {should_not be_valid}
    end
+
+	describe "when email format is invalid" do
+		it "should be invalid" do
+			addresses = %w[user@foo,com user_at_person.org example.foo@foo-bar@foo.com foo@example+biz.com]
+			addresses.each do |invalid_address|
+				@user.email = invalid_address
+				@user.should_not be_valid
+			end
+    end
+	end
+
+	describe "when email format is valid" do
+		it "should be valid" do
+			addresses = %w[user@foo.COM A_USER.f@sun.org first.last@foo.jp a+b@baz.com]
+			addresses.each do |valid_address|
+				@user.email = valid_address
+				@user.should be_valid
+			end
+		end
+	end
+
+	describe "when email address is already taken" do
+		before do
+			user_with_same_email = @user.dup
+		  user_with_same_email.email = @user.email.upcase
+			user_with_same_email.save
+		end
+
+		it { should_not be_valid }
+	end
 
 end
