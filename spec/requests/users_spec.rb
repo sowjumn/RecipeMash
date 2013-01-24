@@ -1,11 +1,40 @@
 require 'spec_helper'
 
-describe "Users" do
-  describe "GET /users" do
-    it "works! (now write some real specs)" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      get users_index_path
-      response.status.should be(200)
-    end
-  end
+describe "User Pages" do
+
+	subject { page }
+
+
+	describe "signup page" do
+		before { visit signup_path  }
+
+		let(:submit) { "Create account" }
+
+		describe "with invalid information" do
+			it "should not create user" do
+				expect {click_button submit}.not_to change(User, :count)
+			end
+		end 
+
+		describe "with valid information" do
+			before do	
+				fill_in "Name", with: "Example User"
+				fill_in "Email", with: "user@example.com"
+				fill_in "Password", with: "foobar4567"
+				fill_in "Confirmation", with: "foobar4567"
+			end
+
+			it "should create a user" do
+				expect {click_button submit}.to change(User, :count).by(1) 
+			end
+		end
+	end
+
 end
+
+
+
+
+
+
+
