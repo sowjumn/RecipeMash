@@ -3,6 +3,7 @@
   Sign-Up (to access the most yummy recipes)</h1>
 <div class="new-content">
   <%= form_for(@user) do |f| %>
+		<%= render 'shared/error_messages' %>
      <%= f.label :name %>
      <%= f.text_field :name %>
      <br /> 
