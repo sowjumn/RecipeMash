@@ -22,7 +22,7 @@ end
 
 
 group :assets do
-	gem 'bootstrap-sass-rails'
+	gem 'bootstrap-sass'
 end
 
 # Gems used only for assets and not required
