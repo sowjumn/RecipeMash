@@ -2,8 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 $bodyBackground: #E4E2BA; 
-
+$navbarBackground: #0C6B45;
+$navbarBackgroundHighlight: #0C6B45;
+$navbarHeight: 60px;
+$navbarText: #DABAE4;
+$navbarBrandColor: #DABAE4;
 @import "bootstrap";
+
+.navbar .brand { 
+  font-family: "chalkduster", "Lucida Grande", sans-serif;
+	font-size: 32px;
+}
+
+.navbar {
+  font-family: "chalkduster", "Lucida Grande", sans-serif;
+}
 
 .user_page {  
   width: 100%;
