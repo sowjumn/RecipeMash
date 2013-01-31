@@ -7,6 +7,9 @@ $navbarBackgroundHighlight: #0C6B45;
 $navbarHeight: 60px;
 $navbarText: #DABAE4;
 $navbarBrandColor: #DABAE4;
+$linkColor: #8FA0CA;
+$btnPrimaryBackground: #354D8B;
+$textColor: #0C6B45;
 @import "bootstrap";
 
 .navbar .brand { 
@@ -17,6 +20,15 @@ $navbarBrandColor: #DABAE4;
 .navbar {
   font-family: "chalkduster", "Lucida Grande", sans-serif;
 }
+
+.navbar-inner {
+	border-radius: 0px;
+	}
+
+h1 { 
+	font-style: italic;
+	font-family: "colonna MT", "Lucida Grande", sans-serif;
+	}
 
 .user_page {  
   width: 100%;
