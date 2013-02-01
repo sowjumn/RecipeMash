@@ -12,18 +12,25 @@
 	<div class="navbar-inner">
 		<div class="container-fluid">
 			<p class="brand"> Recipe Mash </p>
-			<ul class="nav nav-list pull-right">
+			<ul class="nav pull-right">
+			<% if signed_in? %>
+				<li> <%= link_to "Profile", '#' %> </li>
+				<li> <%= link_to "Log Out", signout_path, method: "delete" %> </li> 
+			<% else %>
 				<li> <%= link_to "Log In", signin_path %></li>
-				<li class="divider-vertical"></li>
 				<li> <%= link_to "Sign Up", signup_path %></li>
-				<li class="divider-vertical"></li>
+			<% end %>
 				<li> <%= link_to "About", '#' %> </li>
 			</ul
 		</div>
 	</div>
 </div>
 
+<div class="container-fluid">
+	<% flash.each do |key,value| %>
+		<div class="alert alert-<%= key %>"><%= value %></div>
+	<% end %>
 <%= yield %>
-
+</div>
 </body>
 </html>
