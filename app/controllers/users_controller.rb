@@ -1,6 +1,13 @@
 class UsersController < ApplicationController
   def new
+	  if signed_in?
+      flash[:error] = "Already Signed in: Signout before signing Up as different User"
+      redirect_to current_user
+    else
      @user = User.new    
+      render 'new'
+    end
+
   end
  
   def show
