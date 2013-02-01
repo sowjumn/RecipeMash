@@ -20,6 +20,12 @@ describe "AuthenticationPages" do
 			it { should have_selector('div.alert.alert-error', text: 'Invalid') }
 		end
 
+		#Check for flash errors
+		describe "after visiting another page" do
+			before { click_button "Home" }
+			it { should_not have_selector(div.alert.alert-error) }
+		end
+
 		describe "with valid information" do
 			let(:user) { FactoryGirl.create(:user) } 
 			before do
@@ -30,6 +36,7 @@ describe "AuthenticationPages" do
 			
 			it { should have_link('Log Out', href: signout_path) }
 			it { should_not  have_link('Sign In', href: signin_path) }
+		end
 	end
 
 end
