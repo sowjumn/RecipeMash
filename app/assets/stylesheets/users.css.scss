@@ -7,6 +7,8 @@ $navbarBackgroundHighlight: #0C6B45;
 $navbarHeight: 60px;
 $navbarText: #DABAE4;
 $navbarBrandColor: #DABAE4;
+$navbarLinkColor: #ACC8CF;
+$navbarLinkColorHover: #DABAE4;
 $linkColor: #8FA0CA;
 $btnPrimaryBackground: #354D8B;
 $textColor: #0C6B45;
@@ -14,7 +16,7 @@ $textColor: #0C6B45;
 
 .navbar .brand { 
   font-family: "chalkduster", "Lucida Grande", sans-serif;
-	font-size: 32px;
+	font-size: 36px;
 }
 
 .navbar {
