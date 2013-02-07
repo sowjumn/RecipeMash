@@ -1,12 +1,12 @@
 <div class="row-fluid">
- <div class="span4">
+ <div class="span10">
   <h1> 
 	  <%= gravatar_for @user %>
 	  <%= @user.name %>
   </h1>
  </div>
 
- <div class="span2 offset6">
+ <div class="span2 ">
 		<%= button_to 'Edit Profile', edit_user_path(@user), method: :get, class: "btn btn-primary" %>
  </div>
 
