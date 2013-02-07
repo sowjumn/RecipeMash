@@ -13,6 +13,7 @@
 		<div class="container-fluid">
 			<p class="brand"> Recipe Mash </p>
 			<ul class="nav pull-right">
+				<li> <%= link_to "Home", root_url %> </li>
 			<% if signed_in? %>
 				<li> <%= link_to "Profile", '#' %> </li>
 				<li> <%= link_to "Log Out", signout_path, method: "delete" %> </li> 
