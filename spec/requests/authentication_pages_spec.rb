@@ -37,6 +37,43 @@ describe "AuthenticationPages" do
 			it { should have_button('Edit Profile') }
 			it { should_not  have_link('Sign In', href: signin_path) }
 		end
-	end
+  end
+		describe "authorization" do
+			
+			describe "for non-signed-in users" do
+				let(:user) { FactoryGirl.create(:user) } 
+				
+				describe "in the Users controller" do
+	
+					describe "visiting the edit page" do
+						before { get edit_user_path(user) }
+						specify { response.should redirect_to(signin_path) } 
+					end
 
+					describe "submitting to the update action" do
+						before { put user_path(user) }
+						specify { response.should redirect_to(signin_path) }
+					end
+				end
+			end
+
+			describe "for wrong users" do 
+				let(:user) { FactoryGirl.create(:user) }
+				let(:wrong_user) { FactoryGirl.create(:user, email: "wrong@example.com") }
+
+				before { sign_in user }
+
+				describe "visiting Users#edit page" do
+					before { get edit_user_path(wrong_user) }
+					specify { response.should redirect_to(root_path) }
+					it { should have_selector('div.alert.alert-error', text: 'Dont access other users info!!!!') }
+				end
+
+				describe "submitting a Put request to the Users#update action" do
+					before { put user_path(wrong_user)	}			
+				  specify { response.should redirect_to(root_path) }
+				end
+			end
+	
+	end
 end

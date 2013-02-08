@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+
+	before_filter :signed_in_user, only: [:edit, :update]
+	before_filter :correct_user, only: [:edit, :update]
+	
   def new
 	  if signed_in?
       flash[:error] = "Already Signed in: Signout before signing Up as different User"
@@ -10,11 +14,9 @@ class UsersController < ApplicationController
   end
 
 	def edit
-		@user = User.find(params[:id])
 	end
 
 	def update
-		@user = User.find(params[:id])
 		if (@user.update_attributes(params[:user])) 
 			sign_in @user
 			flash[:success] = "Your Profile is updated"
@@ -22,7 +24,6 @@ class UsersController < ApplicationController
 		else
 			render 'edit'
 		end
-		
 	end
 
  
@@ -41,4 +42,18 @@ class UsersController < ApplicationController
      end
   end
 
+
+	private
+		
+		def signed_in_user		
+			redirect_to signin_url, notice: "Please sign in!! " unless signed_in?
+		end
+
+		def correct_user
+			@user = User.find(params[:id])
+			unless current_user?(@user) 
+				flash[:error] = "Dont access other users info!!!!" 
+				redirect_to root_url 
+			end
+		end
 end
