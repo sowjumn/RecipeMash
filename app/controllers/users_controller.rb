@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
-	before_filter :signed_in_user, only: [:index, :edit, :update, :destroy]
-	before_filter :correct_user, only: [:edit, :update, :destroy]
+	before_filter :signed_in_user, only: [:index, :edit, :show, :update, :destroy]
+	before_filter :correct_user, only: [:edit, :update, :show, :destroy]
 
 	def index
 			redirect_to current_user
