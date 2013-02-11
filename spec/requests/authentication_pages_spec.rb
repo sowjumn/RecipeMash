@@ -55,6 +55,32 @@ describe "AuthenticationPages" do
 						before { put user_path(user) }
 						specify { response.should redirect_to(signin_path) }
 					end
+					
+					describe "visiting the users index page without signin" do
+						describe " redirect to signin" do
+							before { get users_path }
+							specify { response.should redirect_to(signin_path) }
+						end
+						describe "after redirect and signin" do 
+							before do
+								visit users_path
+								fill_in "Email", with: user.email 
+								fill_in "Password", with: user.password
+								click_button "Sign In"
+							end
+							it { should have_selector('title', text: "Profile") }
+						 end
+					 end
+					
+					describe "visiting the users index page after signin" do
+						before do
+							sign_in user
+							visit users_path
+						end
+		
+						it { should have_selector('title', text: "Profile") }
+					end
+
 				end
 				
 				describe "friendly forwarding" do

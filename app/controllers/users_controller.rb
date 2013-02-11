@@ -1,7 +1,12 @@
 class UsersController < ApplicationController
 
-	before_filter :signed_in_user, only: [:edit, :update]
+	before_filter :signed_in_user, only: [:index, :edit, :update]
 	before_filter :correct_user, only: [:edit, :update]
+
+	def index
+			redirect_to current_user
+	end		
+
 	
   def new
 	  if signed_in?
