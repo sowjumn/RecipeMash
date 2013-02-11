@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
-	before_filter :signed_in_user, only: [:index, :edit, :update]
-	before_filter :correct_user, only: [:edit, :update]
+	before_filter :signed_in_user, only: [:index, :edit, :update, :destroy]
+	before_filter :correct_user, only: [:edit, :update, :destroy]
 
 	def index
 			redirect_to current_user
@@ -46,6 +46,13 @@ class UsersController < ApplicationController
        render 'new'
      end
   end
+
+  def destroy
+		 User.find(params[:id]).destroy
+		 flash[:notice] = "Your Profile is deleted. We miss you"
+		 redirect_to root_path
+	end
+		
 
 
 	private

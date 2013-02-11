@@ -45,6 +45,11 @@ describe "AuthenticationPages" do
 				let(:user) { FactoryGirl.create(:user) } 
 				
 				describe "in the Users controller" do
+
+					describe "delete a user" do
+	          before { delete user_path(user) }
+	          specify { response.should redirect_to(signin_path) }
+  	      end
 	
 					describe "visiting the edit page" do
 						before { get edit_user_path(user) }
@@ -110,6 +115,11 @@ describe "AuthenticationPages" do
 				describe "submitting a Put request to the Users#update action" do
 					before { put user_path(wrong_user)	}			
 				  specify { response.should redirect_to(root_path) }
+				end
+		
+				describe "delete a user" do
+					before { delete user_path(wrong_user) } 
+					specify { response.should redirect_to(root_path) }
 				end
 			end
 		
