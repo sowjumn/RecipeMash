@@ -1,10 +1,12 @@
 <% provide(:title, 'Sign Up') %>
 
 <div>
-<h1 class="new-h1">
-  Sign-Up (to post the most yummy recipes)</h1>
 <div class="row-fluid">
-	<div class="span6 offset1">
+<h1 class="span11 offset1">
+  Sign-Up (to post the most yummy recipes)</h1>
+</div>
+<div class="row-fluid">
+	<div class="span6 offset2">
 	  <%= form_for(@user) do |f| %>
 			<%= render 'shared/error_messages' %>
      	<%= f.label :name %>
