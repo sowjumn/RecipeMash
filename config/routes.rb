@@ -1,10 +1,8 @@
 RecipeMash::Application.routes.draw do
 
-  get "recipes/home"
+  get "staticpages/contact"
 
-  get "recipes/contact"
-
-  root to: 'recipes#home'
+  root to: 'static_pages#home'
   
   resources :users
 	resources :sessions, only:  [:new, :create, :destroy]
