@@ -38,7 +38,8 @@ describe "AuthenticationPages" do
 			it { should_not  have_link('Sign In', href: signin_path) }
 		end
   end
-		describe "authorization" do
+
+	describe "authorization" do
 			
 			describe "for non-signed-in users" do
 				let(:user) { FactoryGirl.create(:user) } 
@@ -55,6 +56,17 @@ describe "AuthenticationPages" do
 						specify { response.should redirect_to(signin_path) }
 					end
 				end
+				
+				describe "friendly forwarding" do
+					before do
+					 visit edit_user_path(user) 
+					 fill_in "Email", with: user.email
+					 fill_in "Password", with: user.password
+					 click_button "Sign In"				 
+					end
+				it { should have_selector('h1', text:"Update Profile") }
+				end			
+		
 			end
 
 			describe "for wrong users" do 
@@ -74,6 +86,7 @@ describe "AuthenticationPages" do
 				  specify { response.should redirect_to(root_path) }
 				end
 			end
+		
 	
 	end
 end
